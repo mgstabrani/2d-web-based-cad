@@ -1,0 +1,51 @@
+#title, #canvas, #button {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+body {
+    background-color: black;
+    color: #ECDBBA;
+    margin: 0;
+    padding: 0;
+}
+
+#canvas-surface {
+    background-color: skyblue;
+}
+
+#color_picker {
+    margin-top: 10px;
+}
+
+nav li {
+    display: inline;
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+nav {
+    background-color: #2D4263;
+    padding: 5px;
+    position: sticky;
+    top: 0;
+ }
+
+nav a {
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ECDBBA;
+}
+
+header {
+    display: inline;
+}
+
+footer {
+    padding: 10px;
+    color: #ECDBBA;
+    background-color: #2D4263;
+    text-align: center;
+    font-weight: bold;
+}
