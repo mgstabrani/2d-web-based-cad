@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <title>2D Web Based CAD (Computer Aided Design)</title>
 </head>
-<body>
+<body onload="load()">
     <header>
         <nav>
             <ul>
@@ -20,12 +20,12 @@
     <h1 id="title">2D Web Based CAD using WebGL</h1>
 
     <div id="button">
-        <input type="button" id="btn_line" value="Line">
+        <input type="button" id="btn_line" value="Line" onclick="setLine()">
         <input type="button" id="btn_square" value="Square">
         <input type="button" id="btn_rectangle" value="Rectangle">
         <input type="button" id="btn_polygon" value="Polygon">
         <br>
-        <input type="color" id="color_picker">
+        <input type="color" id="color_picker" onchange="getColor()">
     </div>
 
     <div id="canvas">
@@ -35,5 +35,8 @@
     <footer>
         <p>Grafika Komputer &#169; 2022, K3 Kelompok 14</p>
     </footer>
+
+    <script src="script.js"></script>
+    <script src="line.js"></script>
 </body>
 </html>
