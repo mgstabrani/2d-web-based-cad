@@ -3,6 +3,14 @@
     text-align: center;
 }
 
+#content {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
+    overflow: auto;
+}
+
 body {
     background-color: black;
     color: #ECDBBA;
@@ -52,4 +60,16 @@ footer {
 
 #file {
     margin-top: 10px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #2D4263;
+}
+
+* {
+    box-sizing: border-box;
 }
