@@ -26,6 +26,11 @@
         <input type="button" id="btn_polygon" value="Polygon">
         <br>
         <input type="color" id="color_picker" onchange="getColor()">
+
+        <div id="file">
+            <input type="text" placeholder="Enter file name" id="file-name">
+            <input type="button" value="Save Object" onclick="saveObject()">
+        </div>
     </div>
 
     <div id="canvas">
@@ -38,5 +43,6 @@
 
     <script src="script.js"></script>
     <script src="line.js"></script>
+    <script src="save_object.js"></script>
 </body>
 </html>
