@@ -4,15 +4,36 @@ const manualData = [
         steps: [
             'Click \'Line\' button',
             'Select two coordinates on canvas',
-        ]
+        ],
     },
     {
         title: 'Changing a Line Length',
         steps: [
             'Click one of line points on canvas',
             'Drag and drop selected point to change line length',
-        ]
-    }
+        ],
+    },
+    {
+        title: 'Changing Object Color',
+        steps: [
+            'Click one of object points',
+            'Change color in color picker',
+        ],
+    },
+    {
+        title: 'Saving Object',
+        steps: [
+            'Enter file name',
+            'Click \'Save File\' button',
+        ],
+    },
+    {
+        title: 'Opening file',
+        steps: [
+            'Choose and upload file',
+            'Click \'Open File\' button',
+        ],
+    },
 ];
 
 const manual = document.getElementById('content');
