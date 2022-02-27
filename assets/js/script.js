@@ -142,6 +142,14 @@ canvas.addEventListener("mousedown", function(e) {
     }
 })
 
+// event = keyup or keydown
+document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        console.log("spacebar pressed")
+        n_poly = n_after
+    }
+}
+
 function render(x, y) {
     if (isPolygon) {
         drawPolygon(x, y)
