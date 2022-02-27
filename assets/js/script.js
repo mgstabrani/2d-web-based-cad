@@ -114,6 +114,7 @@ function main(vertices, n, method) {
 let isPolygon = false
 let isLine = false
 let isSquare = false
+let isRectangle = false
 
 let x = 0
 let y = 0
@@ -148,6 +149,8 @@ function render(x, y) {
        drawLine(x, y)
     } else if (isSquare) {
         drawSquare(x, y)
+    } else if (isRectangle) {
+        drawRectangle(x, y)
     }
 }
 

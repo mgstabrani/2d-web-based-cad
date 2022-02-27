@@ -5,6 +5,7 @@ function setLine() {
     isLine = true
     isSquare = false
     isPolygon = false
+    isRectangle = false
 }
 
 function drawLine(x, y) {
