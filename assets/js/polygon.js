@@ -6,12 +6,11 @@ function setPolygon() {
     isPolygon = true
     isRectangle = false
     poly_stat = "unfinished"
-    num_polygon = 99999
     isSelect = false
 }
 
 function drawPolygon(x, y) {
-    if (n_after < num_polygon) {
+    if (poly_stat === "unfinished") {
         vertices.push(x)
         vertices.push(y)
         vertices.push(rgb[0]/255)
@@ -19,15 +18,10 @@ function drawPolygon(x, y) {
         vertices.push(rgb[2]/255)
         n_after++
         renderAll()
-        if (n_after < num_polygon) {
-            main(vertices, n_after, gl.TRIANGLE_FAN)
-        } else {
-            renderObject(vertices, n_after, gl.TRIANGLE_FAN)
-        }
+        main(vertices, n_after, gl.TRIANGLE_FAN)
     }
 
-    if (n_after == num_polygon) {
-        console.log("masuk sini")
+    if (poly_stat === "finished") {
         arrObjects.push({
             vert: vertices,
             meth: gl.TRIANGLE_FAN,

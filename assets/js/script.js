@@ -153,14 +153,16 @@ canvas.addEventListener("mousedown", function(e) {
 
 // event = keyup or keydown
 document.body.onkeyup = function(e){
-    if (isPolygon) {
-        if (poly_stat = "unfinished") {
-            if (e.keyCode == 32) {
+    if (e.keyCode == 32) {
+        if (isPolygon) {
+            if (poly_stat === "unfinished") {
                 console.log("spacebar pressed")
                 poly_stat = "finished"
+                renderAll()
                 renderObject(vertices, n_after, gl.TRIANGLE_FAN)
-                e.keyCode = null
-            }   
+                drawPolygon(x, y)
+                e.keyCode = null 
+            }
         }
     }
 }
