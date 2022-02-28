@@ -3,6 +3,7 @@ function setSquare() {
     isSquare = true
     isPolygon = false
     isRectangle = false
+    isSelect = false
 }
 
 function setRectangle() {
@@ -10,6 +11,7 @@ function setRectangle() {
     isSquare = false
     isPolygon = false
     isRectangle = true
+    isSelect = false
 }
 
 function drawSquare(x, y, translation=0.25) {

@@ -7,6 +7,7 @@ function setPolygon() {
     isRectangle = false
     poly_stat = "unfinished"
     num_polygon = 99999
+    isSelect = false
 }
 
 function drawPolygon(x, y) {

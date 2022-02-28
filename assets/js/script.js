@@ -115,6 +115,15 @@ let isPolygon = false
 let isLine = false
 let isSquare = false
 let isRectangle = false
+let isSelect = false
+
+function setSelect() {
+    isLine = false
+    isSquare = false
+    isPolygon = false
+    isRectangle = false
+    isSelect = true
+}
 
 let x = 0
 let y = 0
@@ -144,12 +153,14 @@ canvas.addEventListener("mousedown", function(e) {
 
 // event = keyup or keydown
 document.body.onkeyup = function(e){
-    if (poly_stat = "unfinished") {
-        if(e.keyCode == 32){
-            console.log("spacebar pressed")
-            num_polygon = n_after
-            renderObject(vertices, n_after, gl.TRIANGLE_FAN)
-            poly_stat = "finished"
+    if (isPolygon) {
+        if (poly_stat = "unfinished") {
+            if (e.keyCode == 32) {
+                console.log("spacebar pressed")
+                poly_stat = "finished"
+                renderObject(vertices, n_after, gl.TRIANGLE_FAN)
+                e.keyCode = null
+            }   
         }
     }
 }
@@ -214,9 +225,70 @@ function checkSelectedObject(x, y) {
     })
 }
 
+
+function getSquarePoint(x, y) {
+    return [
+        x-0.008, y+0.008, 1.0, 1.0, 1.0,
+        x+0.008, y+0.008, 1.0, 1.0, 1.0,
+        x+0.008, y-0.008, 1.0, 1.0, 1.0,
+        x-0.008, y-0.008, 1.0, 1.0, 1.0
+    ]
+}
+
 function changeObjectPoint(canvas, ev) {
     x = getXCursorPosition(canvas, ev)
     y = getYCursorPosition(canvas, ev)
+
+    if (isSelect) {
+        if (selectedObject.type == "line") {
+            var xtemp = selectedObject.vert[idxPoint*5]
+            var ytemp = selectedObject.vert[idxPoint*5 + 1]
+            selectedObject.vert[idxPoint*5] = x
+            selectedObject.vert[idxPoint*5 + 1] = y
+            selectedObject.p[idxPoint] = getSquarePoint(x, y)
+            idxPoint = (idxPoint + 1) % 2
+            var xtrans = selectedObject.vert[idxPoint*5] - xtemp
+            var ytrans = selectedObject.vert[idxPoint*5 + 1] - ytemp
+            xtemp = selectedObject.vert[idxPoint*5]
+            ytemp = selectedObject.vert[idxPoint*5 + 1]
+            selectedObject.vert[idxPoint*5] = x + xtrans
+            selectedObject.vert[idxPoint*5 + 1] = y + ytrans
+            selectedObject.p[idxPoint] = getSquarePoint(x + xtrans, y + ytrans)
+            renderAll()
+            isSelect = false
+            isDrag = false
+        }
+        else if (selectedObject.type == "square" || selectedObject.type == "rectangle") {
+            var xtrans, ytrans
+            var xtemp = selectedObject.vert[idxPoint*5]
+            var ytemp = selectedObject.vert[idxPoint*5 + 1]
+            selectedObject.vert[idxPoint*5] = x
+            selectedObject.vert[idxPoint*5 + 1] = y
+            selectedObject.p[idxPoint] = getSquarePoint(x, y)
+            var iter = 1
+            while (iter<4) {
+                idxPoint = (idxPoint + 1) % 4
+                xtrans = selectedObject.vert[idxPoint*5] - xtemp
+                ytrans = selectedObject.vert[idxPoint*5 + 1] - ytemp
+                xtemp = selectedObject.vert[idxPoint*5]
+                ytemp = selectedObject.vert[idxPoint*5 + 1]
+                selectedObject.vert[idxPoint*5] = selectedObject.vert[((idxPoint+3)*5)%20] + xtrans
+                selectedObject.vert[idxPoint*5 + 1] = selectedObject.vert[((idxPoint+3)*5 + 1)%20] + ytrans
+                selectedObject.p[idxPoint] = getSquarePoint(selectedObject.vert[idxPoint*5], selectedObject.vert[idxPoint*5 + 1])
+                iter = iter + 1
+            }
+            console.log(selectedObject.vert)
+            renderAll()
+            isSelect = false
+            isDrag = false
+        }
+        else if (selectedObject.type == "polygon") {
+            console.log("masuk")
+            isSelect = false
+            isDrag = false
+        }
+        return
+    }
         
     if (isDrag && selectedObject.type != "square") {
         // change vertices point

@@ -6,6 +6,7 @@ function setLine() {
     isSquare = false
     isPolygon = false
     isRectangle = false
+    isSelect = false
 }
 
 function drawLine(x, y) {
@@ -38,13 +39,4 @@ function drawLine(x, y) {
         isLine = false
         points = []
     }
-}
-
-function getSquarePoint(x, y) {
-    return [
-        x-0.015, y+0.015, 1.0, 1.0, 1.0,
-        x+0.015, y+0.015, 1.0, 1.0, 1.0,
-        x+0.015, y-0.015, 1.0, 1.0, 1.0,
-        x-0.015, y-0.015, 1.0, 1.0, 1.0
-    ]
 }
