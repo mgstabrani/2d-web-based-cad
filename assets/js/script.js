@@ -300,7 +300,7 @@ function changeObjectPoint(canvas, ev) {
         renderAll()
         isDrag = false
     } else if (isDrag && selectedObject.type == "square") {
-        scaleSquare(x, y)
+        squareScaling(x, y)
         renderAll()
         isDrag = false
     }

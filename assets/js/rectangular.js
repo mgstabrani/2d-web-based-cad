@@ -52,14 +52,16 @@ function drawRectangle(x, y) {
 
 function getVertices(x, y, translation, type) {
     if (type === 'square') {
-        var x1 = x - translation
-        var y1 = y + translation
+        var x1 = x - translation/2
+        var y1 = y + translation/2
+        var x2 = x1 + translation
+        var y2 = y1 - translation
         
         return [
-            x, y, rgb[0]/255, rgb[1]/255, rgb[2]/255,
-            x, y1, rgb[0]/255, rgb[1]/255, rgb[2]/255,
             x1, y1, rgb[0]/255, rgb[1]/255, rgb[2]/255,
-            x1, y, rgb[0]/255, rgb[1]/255, rgb[2]/255
+            x1, y2, rgb[0]/255, rgb[1]/255, rgb[2]/255,
+            x2, y2, rgb[0]/255, rgb[1]/255, rgb[2]/255,
+            x2, y1, rgb[0]/255, rgb[1]/255, rgb[2]/255
         ]
     }
     else if (type === 'rectangle') {
@@ -76,4 +78,20 @@ function getVertices(x, y, translation, type) {
             
         ]
     }
+}
+
+function squareScaling(x, y) {
+    console.log(selectedObject.vert)
+    var center = [(selectedObject.vert[0] + selectedObject.vert[15])/2, (selectedObject.vert[1] + selectedObject.vert[6])/2]
+    console.log(center)
+    var xtrans = Math.abs(x - center[0])
+    var ytrans = Math.abs(y - center[1])
+    var trans = Math.max(xtrans, ytrans) * 2 
+    selectedObject.vert = getVertices(center[0], center[1], trans, 'square')
+    var newpoints = []
+    for (var i=0; i<selectedObject.vert.length; i+=5) {
+        var newpoint = getSquarePoint(selectedObject.vert[i], selectedObject.vert[i+1])
+        newpoints.push(newpoint)
+    }
+    selectedObject.p = newpoints
 }
