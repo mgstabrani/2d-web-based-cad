@@ -147,6 +147,7 @@ document.body.onkeyup = function(e){
     if(e.keyCode == 32){
         console.log("spacebar pressed")
         n_poly = n_after
+        renderObject(vertices, n_after, gl.TRIANGLE_FAN)
     }
 }
 

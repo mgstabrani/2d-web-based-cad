@@ -7,6 +7,15 @@ const manualData = [
         ],
     },
     {
+        title: 'Drawing a Polygon',
+        steps: [
+            'Click \'Polygon\' button',
+            'Select at least 3 coordinates to make a shape',
+            'Click as many as you like to make another new vertices',
+            'Pess \'spacebar\' button in your device to finish making your polygon',
+        ],
+    },
+    {
         title: 'Changing a Line Length',
         steps: [
             'Click one of line points on canvas',
