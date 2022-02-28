@@ -46,8 +46,8 @@ const manualData = [
     {
         title: 'Changing Square Size',
         steps: [
-            'Lorem ipsum',
-            'Lorem ipsum',
+            'Click one of square points on canvas',
+            'Drag and drop the selected point',
         ],
     },
     {
