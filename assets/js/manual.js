@@ -7,6 +7,20 @@ const manualData = [
         ],
     },
     {
+        title: 'Drawing a Square',
+        steps: [
+            'Click \'Square\' button',
+            'Select one coordinate on canvas as center point',
+        ],
+    },
+    {
+        title: 'Drawing a Rectangle',
+        steps: [
+            'Click \'Rectangle\' button',
+            'Select one coordinate on canvas as center point',
+        ],
+    },
+    {
         title: 'Drawing a Polygon',
         steps: [
             'Click \'Polygon\' button',
@@ -16,10 +30,24 @@ const manualData = [
         ],
     },
     {
+        title: 'Translate Point with Mouse',
+        steps: [
+            'Click one of object points on canvas',
+            'Drag the selected point for translation',
+        ],
+    },
+    {
         title: 'Changing a Line Length',
         steps: [
             'Click one of line points on canvas',
             'Drag and drop selected point to change line length',
+        ],
+    },
+    {
+        title: 'Changing Square Size',
+        steps: [
+            'Lorem ipsum',
+            'Lorem ipsum',
         ],
     },
     {
