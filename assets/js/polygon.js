@@ -21,7 +21,7 @@ function drawPolygon(x, y) {
         main(vertices, n_after, gl.TRIANGLE_FAN)
     }
 
-    if (poly_stat === "finished") {
+    else if (poly_stat === "finished") {
         arrObjects.push({
             vert: vertices,
             meth: gl.TRIANGLE_FAN,
